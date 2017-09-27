@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Gist name</th>
+    <th></th>
+  </tr>
+  <%= for gist <- @gists do %>
+    <tr>
+      <td>
+        <%= gist.name %>
+      </td>
+      <td>
+        <%= link "View", to: gist_path(@conn, :show, gist.id) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+

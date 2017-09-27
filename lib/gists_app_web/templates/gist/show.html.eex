@@ -1,0 +1,18 @@
+<h2>Show Gist</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @gist.name %>
+  </li>
+
+  <li>
+    <strong>Code:</strong>
+    <%= @gist.code %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: gist_path(@conn, :edit, @gist) %></span>
+<span><%= link "Back", to: gist_path(@conn, :index) %></span>

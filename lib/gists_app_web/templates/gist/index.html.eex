@@ -1,0 +1,30 @@
+<h2>Listing Gists</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>User</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for gist <- @gists do %>
+    <tr>
+      <td><%= gist.name %></td>
+      <td><%= gist.code %></td>
+      <td><%= gist.user_id %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: gist_path(@conn, :show, gist), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: gist_path(@conn, :edit, gist), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: gist_path(@conn, :delete, gist), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Gist", to: gist_path(@conn, :new) %></span>
