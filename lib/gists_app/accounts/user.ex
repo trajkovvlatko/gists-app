@@ -8,6 +8,7 @@ defmodule GistsApp.Accounts.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    field :is_admin, :boolean
     has_many :gists, Gist
 
     timestamps()
@@ -26,5 +27,7 @@ defmodule GistsApp.Accounts.User do
   end
 
   def logged_in?(conn), do: !!current_user(conn)
+
+  def is_admin?(conn), do: current_user(conn).is_admin
 
 end

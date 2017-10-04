@@ -3,7 +3,6 @@ defmodule GistsAppWeb.GistController do
 
   alias GistsApp.Publications
   alias GistsApp.Publications.Gist
-  alias GistsApp.Accounts.User
 
   plug GistsApp.Plugs.Authenticate
 

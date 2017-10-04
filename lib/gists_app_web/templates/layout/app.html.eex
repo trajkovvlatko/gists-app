@@ -17,12 +17,14 @@
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <li>
-              <%= link "Home", to: page_path(@conn, :index) %>
+              <%= link "Home", to: public_path(@conn, :index) %>
             </li>
             <%= if logged_in?(@conn) do %>
-              <li>
-                <%= link "Users", to: user_path(@conn, :index) %>
-              </li>
+              <%= if is_admin?(@conn) do %>
+                <li>
+                  <%= link "Users", to: user_path(@conn, :index) %>
+                </li>
+              <% end %>
               <li>
                 <%= link "Gists", to: gist_path(@conn, :index) %>
               </li>

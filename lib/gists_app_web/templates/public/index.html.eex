@@ -9,7 +9,7 @@
         <%= gist.name %>
       </td>
       <td>
-        <%= link "View", to: gist_path(@conn, :show, gist.id) %>
+        <%= link "View", to: public_path(@conn, :show, gist.id) %>
       </td>
     </tr>
   <% end %>

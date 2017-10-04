@@ -23,6 +23,22 @@ defmodule GistsApp.Publications do
   end
 
   @doc """
+  Returns one public gist.
+
+  ## Examples
+
+      iex> public_gist!(123)
+      %Gist{}
+
+      iex> public_gist!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def public_gist(id) do
+    Repo.get_by!(Gist, public: true, id: id)
+  end
+
+  @doc """
   Returns the list of public gists.
 
   ## Examples

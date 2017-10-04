@@ -1,0 +1,6 @@
+<h2>
+  <%= @gist.name %>
+</h2>
+<code>
+  <%= @gist.code %>
+</code>

@@ -16,7 +16,8 @@ defmodule GistsAppWeb.Router do
   scope "/", GistsAppWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", PublicController, :index
+    get "/public/:id", PublicController, :show
     resources "/gists", GistController
     resources "/users", UserController
 

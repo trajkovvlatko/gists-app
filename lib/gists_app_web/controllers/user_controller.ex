@@ -3,9 +3,9 @@ defmodule GistsAppWeb.UserController do
 
   alias GistsApp.Accounts
   alias GistsApp.Accounts.User
-  alias GistsApp.Publications.Gist
 
   plug GistsApp.Plugs.Authenticate when not action in [:new, :create]
+  plug :check_admin when not action in [:new, :create]
 
   def index(conn, _params) do
     users = Accounts.list_users()
@@ -23,7 +23,7 @@ defmodule GistsAppWeb.UserController do
     user_params = Map.put(user_params, "password_hash", hash_password)
 
     case Accounts.create_user(user_params) do
-      {:ok, user} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "User created successfully. Please login.")
         |> redirect(to: session_path(conn, :new))
@@ -63,6 +63,17 @@ defmodule GistsAppWeb.UserController do
     conn
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: user_path(conn, :index))
+  end
+
+  defp check_admin(conn, _) do
+    user = conn.assigns[:current_user] || %User{}
+    unless user.is_admin do
+      conn
+      |> put_flash(:info, "The resource is not allowed.")
+      |> redirect(to: public_path(conn, :index))
+      |> halt
+    end
+    conn
   end
 
 end

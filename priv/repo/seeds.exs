@@ -9,3 +9,9 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+GistsApp.Repo.insert!(%GistsApp.Accounts.User{
+  email: "admin@admin.com",
+  password_hash: Comeonin.Bcrypt.hashpwsalt("admin@admin.com"),
+  is_admin: true
+})

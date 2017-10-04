@@ -40,7 +40,11 @@ defmodule GistsAppWeb do
       import GistsAppWeb.Router.Helpers
       import GistsAppWeb.ErrorHelpers
       import GistsAppWeb.Gettext
-      import GistsApp.Accounts.User, only: [current_user: 1, logged_in?: 1]
+      import GistsApp.Accounts.User, only: [
+        current_user: 1,
+        logged_in?: 1,
+        is_admin?: 1
+      ]
     end
   end
 
