@@ -26,10 +26,4 @@ npm-debug.log
 # variables.
 /config/*.secret.exs
 
-assets/css/phoenix.css
-
-assets/js/app.js
-
-assets/css/app.css
-
 assets/js/socket.js

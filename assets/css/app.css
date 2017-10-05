@@ -1,0 +1,85 @@
+/* This file is for your main application css. */
+
+h3.title {
+  margin-bottom: 20px;
+}
+
+.actions {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.header {
+  overflow: hidden;
+}
+
+.main-logo {
+  width: 170px;
+  height: 60px;
+  float: left;
+}
+
+.inline-actions {
+  float: right;
+}
+
+/* Gists list */
+
+.gists-list {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.gist-item {
+  margin-bottom: 20px;
+}
+
+.gist-item .gist-name {
+  margin-bottom: 5px;
+}
+
+.gist-code {
+  max-height: 300px;
+  overflow: auto;
+  position: relative;
+}
+
+.gist-code-short {
+  max-height: 60px;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+}
+
+.gist-code-short .CodeMirror-scroll {
+  overflow: hidden !important;
+}
+
+
+/* Gist form */
+
+.input-gist-code {
+  min-height: 160px;
+}
+
+.checkbox.input-gist-public {
+  display: inline-block;
+}
+
+
+/* fade background */
+
+.gist-code:after,
+.gist-code-short:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 12px;
+  background: -moz-linear-gradient(top,rgba(255,255,255,0) 0,#fff 100%);
+  background: -webkit-linear-gradient(top,rgba(255,255,255,0) 0,#fff 100%);
+  background: linear-gradient(to bottom,rgba(255,255,255,0) 0,#fff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
+  z-index: 100;
+}
