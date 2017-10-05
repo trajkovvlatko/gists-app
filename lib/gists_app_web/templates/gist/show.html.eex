@@ -1,8 +1,8 @@
 <h3 class="title"><%= @gist.name %></h3>
 
-<code>
-  <%= @gist.code %>
-</code>
+<div class="gist-code">
+  <textarea class="readonly"><%= @gist.code %></textarea>
+</div>
 
 <div class="actions">
   <%= link "Edit", to: gist_path(@conn, :edit, @gist) %>

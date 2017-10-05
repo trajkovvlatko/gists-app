@@ -6,8 +6,8 @@
       <div class="gist-name">
         <%= link gist.name, to: public_path(@conn, :show, gist.id) %>
       </div>
-      <div class="gist-code">
-        <code><%= gist.code %></code>
+      <div class="gist-code-short">
+        <textarea class="readonly"><%= gist.code %></textarea>
       </div>
     </div>
   <% end %>

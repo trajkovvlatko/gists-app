@@ -15,8 +15,8 @@
           <%= link "Delete", to: gist_path(@conn, :delete, gist), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
         </div>
       </div>
-      <div class="gist-code">
-        <code><%= gist.code %></code>
+      <div class="gist-code-short">
+        <textarea class="readonly"><%= gist.code %></textarea>
       </div>
     </div>
   <% end %>
