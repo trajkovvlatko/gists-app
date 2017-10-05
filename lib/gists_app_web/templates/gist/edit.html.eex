@@ -1,5 +1,7 @@
-<h2>Edit Gist</h2>
+<h3 class="title">Edit gist</h3>
 
 <%= render "form.html", Map.put(assigns, :action, gist_path(@conn, :update, @gist)) %>
 
-<span><%= link "Back", to: gist_path(@conn, :index) %></span>
+<div class="actions">
+  <%= link "Back", to: gist_path(@conn, :index) %>
+</div>

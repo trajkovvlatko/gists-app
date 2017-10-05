@@ -18,12 +18,14 @@ defmodule GistsAppWeb.Router do
 
     get "/", PublicController, :index
     get "/public/:id", PublicController, :show
+
     resources "/gists", GistController
+
     resources "/users", UserController
+    get "/register", UserController, :new
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create
-    get "/register", UserController, :new
     delete "/logout", SessionController, :delete
   end
 

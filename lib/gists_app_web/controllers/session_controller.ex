@@ -11,7 +11,6 @@ defmodule GistsAppWeb.SessionController do
       {:ok, user} ->
         conn
         |> put_session(:user_id, user.id)
-        |> put_flash(:info, "Logged in")
         |> redirect(to: "/")
       :error ->
         conn

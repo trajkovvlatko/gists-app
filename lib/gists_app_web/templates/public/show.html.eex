@@ -1,6 +1,11 @@
-<h2>
+<h3 class="title">
   <%= @gist.name %>
-</h2>
+</h3>
+
 <code>
   <%= @gist.code %>
 </code>
+
+<div class="actions">
+  <%= link "Back", to: public_path(@conn, :index) %>
+</div>

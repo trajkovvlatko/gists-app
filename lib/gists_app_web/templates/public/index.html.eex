@@ -1,17 +1,14 @@
-<table>
-  <tr>
-    <th>Gist name</th>
-    <th></th>
-  </tr>
-  <%= for gist <- @gists do %>
-    <tr>
-      <td>
-        <%= gist.name %>
-      </td>
-      <td>
-        <%= link "View", to: public_path(@conn, :show, gist.id) %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<h3 class="title">Public gists</h3>
 
+<div class="gists-list">
+  <%= for gist <- @gists do %>
+    <div class="gist-item">
+      <div class="gist-name">
+        <%= link gist.name, to: public_path(@conn, :show, gist.id) %>
+      </div>
+      <div class="gist-code">
+        <code><%= gist.code %></code>
+      </div>
+    </div>
+  <% end %>
+</div>

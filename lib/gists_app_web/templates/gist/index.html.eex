@@ -1,25 +1,23 @@
-<h2>Listing Gists</h2>
+<h3 class="title">Personal gists</h3>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= for gist <- @gists do %>
-      <tr>
-        <td><%= gist.name %></td>
+<div class="actions">
+  <%= link "New Gist", to: gist_path(@conn, :new) %>
+</div>
 
-        <td class="text-right">
-          <span><%= link "Show", to: gist_path(@conn, :show, gist), class: "btn btn-default btn-xs" %></span>
-          <span><%= link "Edit", to: gist_path(@conn, :edit, gist), class: "btn btn-default btn-xs" %></span>
-          <span><%= link "Delete", to: gist_path(@conn, :delete, gist), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="gists-list">
+  <%= for gist <- @gists do %>
+    <div class="gist-item">
+      <div class="gist-name">
+        <%= link gist.name, to: gist_path(@conn, :show, gist.id) %>
 
-<span><%= link "New Gist", to: gist_path(@conn, :new) %></span>
+        <div class="inline-actions">
+          <%= link "Edit", to: gist_path(@conn, :edit, gist), class: "btn btn-default btn-xs" %>
+          <%= link "Delete", to: gist_path(@conn, :delete, gist), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        </div>
+      </div>
+      <div class="gist-code">
+        <code><%= gist.code %></code>
+      </div>
+    </div>
+  <% end %>
+</div>

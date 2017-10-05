@@ -14,6 +14,7 @@
   <body>
     <div class="container">
       <header class="header">
+        <img src="https://via.placeholder.com/170x60" class="main-logo" />
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <li>
