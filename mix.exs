@@ -20,7 +20,8 @@ defmodule GistsApp.Mixfile do
   def application do
     [
       mod: {GistsApp.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :scrivener, :scrivener_ecto,
+      :scrivener_html]
     ]
   end
 
@@ -42,7 +43,11 @@ defmodule GistsApp.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 1.0"}
+      {:bcrypt_elixir, "~> 1.0"},
+      {:scrivener, "~> 2.0"},
+      {:scrivener_ecto, "~> 1.0"},
+      {:scrivener_list, "~> 1.0"},
+      {:scrivener_html, "~> 1.7"}
     ]
   end
 

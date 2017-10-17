@@ -5,7 +5,7 @@
 </div>
 
 <div class="gists-list">
-  <%= for gist <- @gists do %>
+  <%= for gist <- @page.entries do %>
     <div class="gist-item">
       <div class="gist-name">
         <%= link gist.name, to: gist_path(@conn, :show, gist.id) %>
@@ -21,3 +21,5 @@
     </div>
   <% end %>
 </div>
+
+<%= pagination_links @page %>

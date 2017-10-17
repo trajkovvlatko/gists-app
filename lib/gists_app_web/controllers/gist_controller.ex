@@ -6,10 +6,11 @@ defmodule GistsAppWeb.GistController do
 
   plug GistsApp.Plugs.Authenticate
 
-  def index(conn, _params) do
+  def index(conn, params) do
     user = conn.assigns.current_user
-    gists = Publications.list_gists(user)
-    render(conn, "index.html", gists: gists)
+    page = Publications.list_gists(user)
+           |> GistsApp.Repo.paginate(params)
+    render conn, "index.html", page: page
   end
 
   def new(conn, _params) do

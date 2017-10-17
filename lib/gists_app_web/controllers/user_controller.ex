@@ -7,9 +7,10 @@ defmodule GistsAppWeb.UserController do
   plug GistsApp.Plugs.Authenticate when not action in [:new, :create]
   plug :check_admin when not action in [:new, :create]
 
-  def index(conn, _params) do
-    users = Accounts.list_users()
-    render(conn, "index.html", users: users)
+  def index(conn, params) do
+    page = Accounts.list_users()
+           |> GistsApp.Repo.paginate(params)
+    render(conn, "index.html", page: page)
   end
 
   def new(conn, _params) do

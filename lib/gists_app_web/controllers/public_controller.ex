@@ -3,9 +3,10 @@ defmodule GistsAppWeb.PublicController do
 
   alias GistsApp.Publications
 
-  def index(conn, _) do
-    gists = Publications.public_gists
-    render(conn, "index.html", gists: gists)
+  def index(conn, params) do
+    page = Publications.public_gists
+           |> GistsApp.Repo.paginate(params)
+    render(conn, "index.html", page: page)
   end
 
   def show(conn, %{"id" => id}) do

@@ -1,5 +1,6 @@
 defmodule GistsApp.Repo do
   use Ecto.Repo, otp_app: :gists_app
+  use Scrivener, page_size: 10
 
   @doc """
   Dynamically loads the repository url from the
