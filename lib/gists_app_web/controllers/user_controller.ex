@@ -19,9 +19,7 @@ defmodule GistsAppWeb.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    password = Map.get(user_params, "password")
-    hash_password = Comeonin.Bcrypt.hashpwsalt(password)
-    user_params = Map.put(user_params, "password_hash", hash_password)
+    user_params = add_hash_password(user_params)
 
     case Accounts.create_user(user_params) do
       {:ok, _} ->
@@ -41,7 +39,7 @@ defmodule GistsAppWeb.UserController do
 
   def update(conn, %{"id" => id, "user" => user_params}) do
     user = Accounts.get_user!(id)
-
+    user_params = add_hash_password(user_params)
     case Accounts.update_user(user, user_params) do
       {:ok, _} ->
         conn
@@ -70,6 +68,12 @@ defmodule GistsAppWeb.UserController do
       |> halt
     end
     conn
+  end
+
+  defp add_hash_password(user_params) do
+    password = Map.get(user_params, "password")
+    hash_password = Comeonin.Bcrypt.hashpwsalt(password)
+    Map.put(user_params, "password_hash", hash_password)
   end
 
 end

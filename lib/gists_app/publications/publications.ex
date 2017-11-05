@@ -20,7 +20,6 @@ defmodule GistsApp.Publications do
   """
   def list_gists(user) do
     Repo.all(from g in Gist,
-             where: [public: true],
              where: g.user_id == ^user.id,
              order_by: [desc: g.inserted_at])
   end
