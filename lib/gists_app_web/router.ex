@@ -18,6 +18,7 @@ defmodule GistsAppWeb.Router do
 
     get "/", PublicController, :index
     get "/public/:id", PublicController, :show
+    get "/search/:term", PublicController, :search
 
     resources "/gists", GistController
 

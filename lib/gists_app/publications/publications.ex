@@ -19,7 +19,10 @@ defmodule GistsApp.Publications do
 
   """
   def list_gists(user) do
-    assoc(user, :gists) |> Repo.all
+    Repo.all(from g in Gist,
+             where: [public: true],
+             where: g.user_id == ^user.id,
+             order_by: [desc: g.inserted_at])
   end
 
   @doc """
@@ -48,7 +51,27 @@ defmodule GistsApp.Publications do
 
   """
   def public_gists() do
-    Repo.all(from g in Gist, where: [public: true])
+    from g in Gist,
+      where: [public: true],
+      join: u in assoc(g, :user),
+      order_by: [desc: g.inserted_at]
+  end
+
+  @doc """
+  Returns the list of public gists by search term
+  ## Examples
+
+      iex> public_gists("term")
+      [%Gist{}, ...]
+
+  """
+  def public_gists(term) do
+    term = "%#{term}%"
+    from g in Gist,
+      where: [public: true],
+      where: (like(g.name, ^term) or like(g.code, ^term)),
+      join: u in assoc(g, :user),
+      order_by: [desc: g.inserted_at]
   end
 
   @doc """

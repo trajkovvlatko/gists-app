@@ -51,8 +51,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :gists_app, GistsApp.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "",
-  password: "",
+  username: System.get_env("DB_USER"),
+  password: System.get_env("DB_PASS"),
   database: "gists_app_dev",
   hostname: "localhost",
   pool_size: 10

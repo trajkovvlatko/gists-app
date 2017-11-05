@@ -22,4 +22,6 @@
   <% end %>
 </div>
 
-<%= pagination_links @page %>
+<%= if @page.total_pages > 1 do %>
+  <%= pagination_links @page %>
+<% end %>

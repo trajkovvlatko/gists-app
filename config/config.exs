@@ -12,7 +12,7 @@ config :gists_app,
 # Configures the endpoint
 config :gists_app, GistsAppWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: GistsAppWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: GistsApp.PubSub,
            adapter: Phoenix.PubSub.PG2]

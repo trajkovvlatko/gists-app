@@ -35,3 +35,19 @@ if (fields.length > 0) {
     CodeMirror.fromTextArea(field, codeMirrorOptions);
   }
 }
+
+var searchField = document.querySelector(".search-field");
+searchField.onkeyup = function(e) {
+  var code = (e.keyCode ? e.keyCode : e.which);
+  if (code !== 13) {
+    return false;
+  }
+
+  var searchTerm = searchField.value;
+  searchTerm = searchTerm ? searchTerm.trim() : "";
+  if (searchTerm === "") {
+    return false;
+  }
+
+  window.location = "/search/" + searchTerm;
+}

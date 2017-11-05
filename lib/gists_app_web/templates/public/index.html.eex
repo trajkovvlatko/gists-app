@@ -1,10 +1,16 @@
 <h3 class="title">Public gists</h3>
+<%= if assigns[:term] do %>
+  <h4>Searching for: <%= @term %></h4>
+<% end %>
 
 <div class="gists-list">
   <%= for gist <- @page.entries do %>
     <div class="gist-item">
       <div class="gist-name">
         <%= link gist.name, to: public_path(@conn, :show, gist.id) %>
+        <%= if assigns[:user] && gist.user_id == @user.id do %>
+          <%= link "Edit", to: gist_path(@conn, :edit, gist), class: "btn btn-default btn-xs" %>
+        <% end %>
       </div>
       <div class="gist-code-short">
         <textarea class="readonly"><%= gist.code %></textarea>
@@ -13,4 +19,6 @@
   <% end %>
 </div>
 
-<%= pagination_links @page %>
+<%= if @page.total_pages > 1 do %>
+  <%= pagination_links @page %>
+<% end %>

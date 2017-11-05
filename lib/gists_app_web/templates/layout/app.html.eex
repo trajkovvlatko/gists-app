@@ -16,7 +16,7 @@
       <header class="header">
         <%= link to: "/" do %>
           <img src="https://via.placeholder.com/170x60" class="main-logo" />
-        <%= end %>
+        <% end %>
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <li>
@@ -45,6 +45,10 @@
           </ul>
         </nav>
       </header>
+      <p class="search">
+        <% term = if (assigns[:term]), do: assigns[:term], else: "" %>
+        <input type="text" value="<%= term %>" class="form-control search-field" placeholder="Search..." />
+      </p>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
